@@ -1,0 +1,6 @@
+.coverage
+.coveragerc
+db.sqlite3
+.cache
+pytest.ini
+*.pyc
