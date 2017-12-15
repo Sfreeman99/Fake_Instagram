@@ -1,0 +1,51 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ALLOWED_HOSTS	../instagram/settings.py	/^ALLOWED_HOSTS = []$/;"	kind:variable	line:27
+AUTH_PASSWORD_VALIDATORS	../instagram/settings.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	kind:variable	line:84
+AppConfig	../app/apps.py	/^class AppConfig(AppConfig):$/;"	kind:class	line:4
+BASE_DIR	../instagram/settings.py	/^BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))$/;"	kind:variable	line:16
+DATABASES	../instagram/settings.py	/^DATABASES = {$/;"	kind:variable	line:74
+DEBUG	../instagram/settings.py	/^DEBUG = True$/;"	kind:variable	line:25
+Feed	../app/views.py	/^class Feed(View):$/;"	kind:class	line:6
+INSTALLED_APPS	../instagram/settings.py	/^INSTALLED_APPS = [$/;"	kind:variable	line:31
+ImageModel	../app/models.py	/^class ImageModel(models.Model):$/;"	kind:class	line:6
+LANGUAGE_CODE	../instagram/settings.py	/^LANGUAGE_CODE = 'en-us'$/;"	kind:variable	line:106
+MEDIA_ROOT	../instagram/settings.py	/^MEDIA_ROOT = '\/home\/basecamp\/Pictures\/'/;"	kind:variable	line:120
+MIDDLEWARE	../instagram/settings.py	/^MIDDLEWARE = [$/;"	kind:variable	line:41
+ROOT_URLCONF	../instagram/settings.py	/^ROOT_URLCONF = 'instagram.urls'$/;"	kind:variable	line:51
+STATIC_URL	../instagram/settings.py	/^STATIC_URL = '\/static\/'$/;"	kind:variable	line:119
+TEMPLATES	../instagram/settings.py	/^TEMPLATES = [$/;"	kind:variable	line:53
+TIME_ZONE	../instagram/settings.py	/^TIME_ZONE = 'UTC'$/;"	kind:variable	line:108
+USE_I18N	../instagram/settings.py	/^USE_I18N = True$/;"	kind:variable	line:110
+USE_L10N	../instagram/settings.py	/^USE_L10N = True$/;"	kind:variable	line:112
+USE_TZ	../instagram/settings.py	/^USE_TZ = True$/;"	kind:variable	line:114
+WSGI_APPLICATION	../instagram/settings.py	/^WSGI_APPLICATION = 'instagram.wsgi.application'$/;"	kind:variable	line:69
+__init__.py	../app/__init__.py	1;"	kind:file	line:1
+__init__.py	../app/migrations/__init__.py	1;"	kind:file	line:1
+__init__.py	../instagram/__init__.py	1;"	kind:file	line:1
+admin.py	../app/admin.py	1;"	kind:file	line:1
+app_name	../app/urls.py	/^app_name = 'app'$/;"	kind:variable	line:4
+application	../instagram/wsgi.py	/^application = get_wsgi_application()$/;"	kind:variable	line:16
+apps.py	../app/apps.py	1;"	kind:file	line:1
+forms.py	../app/forms.py	1;"	kind:file	line:1
+get	../app/views.py	/^    def get(request):$/;"	kind:member	line:7
+image	../app/models.py	/^    image = models.ImageField($/;"	kind:variable	line:8
+manage.py	../manage.py	1;"	kind:file	line:1
+models.py	../app/models.py	1;"	kind:file	line:1
+name	../app/apps.py	/^    name = 'app'$/;"	kind:variable	line:5
+name	../app/models.py	/^        name=name, )$/;"	kind:variable	line:10
+name	../app/models.py	/^    name = models.CharField()$/;"	kind:variable	line:7
+settings.py	../instagram/settings.py	1;"	kind:file	line:1
+test_this_should_work	../app/tests.py	/^def test_this_should_work():$/;"	kind:function	line:6
+tests.py	../app/tests.py	1;"	kind:file	line:1
+upload_to	../app/models.py	/^        upload_to='pictures',$/;"	kind:variable	line:9
+urlpatterns	../app/urls.py	/^urlpatterns = [$/;"	kind:variable	line:6
+urlpatterns	../instagram/urls.py	/^urlpatterns = [$/;"	kind:variable	line:19
+urls.py	../app/urls.py	1;"	kind:file	line:1
+urls.py	../instagram/urls.py	1;"	kind:file	line:1
+views.py	../app/views.py	1;"	kind:file	line:1
+wsgi.py	../instagram/wsgi.py	1;"	kind:file	line:1

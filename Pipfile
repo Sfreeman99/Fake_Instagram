@@ -4,8 +4,12 @@ url = "https://pypi.python.org/simple"
 name = "pypi"
 
 [packages]
+
 django = "*"
 pillow = "*"
+"pytest-django" = "*"
+coverage = "*"
+"pytest-cov" = "*"
 
 
 [dev-packages]
