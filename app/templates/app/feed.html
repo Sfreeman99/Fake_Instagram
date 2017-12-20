@@ -1,0 +1,5 @@
+{% extends 'app/base.html' %} {% load static %} {% block body %}
+{% for image_model in images %}
+    <p><img src="{% static image_model.image_url %}" />{{ image_model.image_url }}</p>
+{% endfor%}
+{% endblock %}

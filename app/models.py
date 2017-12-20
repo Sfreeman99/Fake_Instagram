@@ -4,5 +4,10 @@ from django.db import models
 
 
 class ImageModel(models.Model):
+    name = models.CharField(
+        max_length=15, )
     image = models.ImageField(
-        upload_to='pictures', )
+        upload_to='app/static/pictures/', )
+
+    def image_url(self):
+        return self.image.name[len('app/static/'):]
