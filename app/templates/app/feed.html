@@ -1,5 +1,28 @@
 {% extends 'app/base.html' %} {% load static %} {% block body %}
+<div class='container'>
+        <div class="card-group">
 {% for image_model in images %}
+    {% comment "Old Code" %}
     <p><img src="{% static image_model.image_url %}" />{{ image_model.image_url }}</p>
+    {% endcomment %}
+            <div class='col-4'>
+                <div class="card">
+                    <img class="card-img-top" src="{% static image_model.image_url %}" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">{{image_model.name}}</h4>
+                    {% comment "Add description for model first" %}
+                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    {% endcomment %}
+                    </div>
+                    {% comment "Add post time for this to work" %}
+                    <div class="card-footer">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </div>
+                    {% endcomment %}
+                </div>
+            </div>
+            
 {% endfor%}
+        </div>
+</div>
 {% endblock %}
