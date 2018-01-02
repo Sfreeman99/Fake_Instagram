@@ -2,9 +2,6 @@
 <div class='container'>
         <div class="card-group">
 {% for image_model in images %}
-    {% comment "Old Code" %}
-    <p><img src="{% static image_model.image_url %}" />{{ image_model.image_url }}</p>
-    {% endcomment %}
             <div class='col-4'>
                 <div class="card">
                     <img class="card-img-top" src="{% static image_model.image_url %}" alt="Card image cap">
@@ -19,7 +16,7 @@
                         <small class="text-muted">Last updated 3 mins ago</small>
                     </div>
                     {% endcomment %}
-                </div>
+                    <a class="btn btn-primary" href="{% url 'app:edit_photo' id=image_model.id %}" role="button">Edit Photo</a>                </div>
             </div>
             
 {% endfor%}
