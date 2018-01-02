@@ -26,3 +26,8 @@ class PostPhotoView(View):
             return redirect('app:feed')
         else:
             return render(request, 'app/post_photo.html', {'form': form})
+
+
+class EditPhotoView(View):
+    def get(self, request, id):
+        pass
