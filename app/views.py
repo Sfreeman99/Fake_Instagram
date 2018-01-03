@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.views import View
 from app.models import *
 from app.forms import *
+from app.core import add_overlay
 
 
 # Create your views here.
@@ -19,9 +20,10 @@ class PostPhotoView(View):
     def post(self, request):
         form = PostPhotoForm(request.POST, request.FILES)
         if form.is_valid():
-            name = form.cleaned_data['name']
-            image = form.cleaned_data['image']
-            ImageModel(name=name, image=image).save()
+            form.save()
+            # name = form.cleaned_data['name']
+            # image = form.cleaned_data['image']
+            # ImageModel(name=name, image=image).save()
 
             return redirect('app:feed')
         else:
@@ -30,4 +32,24 @@ class PostPhotoView(View):
 
 class EditPhotoView(View):
     def get(self, request, id):
-        pass
+        return render(
+            request,
+            'app/edit_photo.html', {
+                'form': EditPhotoForm(),
+                'photo': ImageModel.objects.get(id=id),
+            })
+
+    def post(self, request, id):
+        form = EditPhotoForm(request.POST, request.FILES)
+        if form.is_valid():
+            image = ImageModel.objects.get(id=id).image
+            overlay = form.cleaned_data['over_lay']
+            filtered_image = add_overlay(image, overlay)
+            image.image.save(image.image.name, filtered_image, save=True)
+            return redirect('app:feed')
+        else:
+            return render(
+                request,
+                'app/edit_photo.html',
+                {'form': form,
+                 'photo': ImageModel.objects.get(id=id)})
