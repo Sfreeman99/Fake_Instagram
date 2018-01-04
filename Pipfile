@@ -10,6 +10,7 @@ pillow = "*"
 "pytest-django" = "*"
 coverage = "*"
 "pytest-cov" = "*"
+selenium = "*"
 
 
 [dev-packages]

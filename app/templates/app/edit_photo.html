@@ -1,0 +1,9 @@
+{% extends "app/base.html" %}{% load static %} {% block body %}
+
+<form method="post" role="form" enctype="multipart/form-data">
+    {% csrf_token %}
+    <img height="200px" src="{% static photo.image_url %}" alt="">
+    {{form.as_p}}
+    <button type="submit">submit</button>
+</form>
+{% endblock body %}

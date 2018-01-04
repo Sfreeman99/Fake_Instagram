@@ -3,6 +3,7 @@ from django.views import View
 from app.models import *
 from app.forms import *
 from app.core import add_overlay
+from PIL import Image
 
 
 # Create your views here.
@@ -42,10 +43,10 @@ class EditPhotoView(View):
     def post(self, request, id):
         form = EditPhotoForm(request.POST, request.FILES)
         if form.is_valid():
-            image = ImageModel.objects.get(id=id).image
+            path = ImageModel.objects.get(id=id).image
+            picture = Image.open(path)
             overlay = form.cleaned_data['over_lay']
-            filtered_image = add_overlay(image, overlay)
-            image.image.save(image.image.name, filtered_image, save=True)
+            filtered_image = add_overlay(path, overlay)
             return redirect('app:feed')
         else:
             return render(

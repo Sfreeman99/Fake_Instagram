@@ -1,7 +1,8 @@
-from django.test import TestCase
-from app import core
+import pytest
+from app.forms import *
 
 
-# Create your tests here.
-def test_this_should_work():
-    assert False
+def test_Post_Photo_Form():
+    form = PostPhotoForm({'name': ''})
+    assert not form.is_valid()
+    assert 'name' in form.errors
