@@ -1,25 +1,30 @@
-{% extends 'app/base.html' %} {% load static %} {% block body %}
+{% extends 'app/base.html' %} {% load static %} {% block body %} {% if images %}
 <div class='container'>
-        <div class="card-group">
-{% for image_model in images %}
-            <div class='col-4'>
-                <div class="card">
-                    <img class="card-img-top" src="{% static image_model.image_url %}" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title">{{image_model.name}}</h4>
+    <div class="card-group">
+        {% for image_model in images %}
+        <div class='col-4'>
+            <div class="card">
+                <img class="card-img-top" src="{% static image_model.image_url %}" alt="Card image cap">
+                <div class="card-body">
+                    <h4 class="card-title">{{image_model.name}}</h4>
                     {% comment "Add description for model first" %}
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content
+                        is a little bit longer.</p>
                     {% endcomment %}
-                    </div>
-                    {% comment "Add post time for this to work" %}
-                    <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                    </div>
-                    {% endcomment %}
-                    <a class="btn btn-primary" href="{% url 'app:edit_photo' id=image_model.id %}" role="button">Edit Photo</a>                </div>
+                </div>
+                {% comment "Add post time for this to work" %}
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                </div>
+                {% endcomment %}
+                <a class="btn btn-primary" href="{% url 'app:edit_photo' id=image_model.id %}" role="button">Edit Photo</a>
             </div>
-            
-{% endfor%}
         </div>
+
+        {% endfor%}
+    </div>
 </div>
-{% endblock %}
+{% else %}
+<h1>You have no photos right now add a photo here:</h1>
+<a class="btn btn-primary" href="{% url 'app:post_photo' %}" role="button">Link</a>
+{% endif %} {% endblock %}
