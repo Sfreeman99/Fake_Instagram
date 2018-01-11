@@ -27,7 +27,9 @@ class NewVisitor(unittest.TestCase):
         self.browser.get('http://localhost:8000/instagram/feed/')
         link = self.browser.find_element_by_id('post_photo')
         link.click()
-        assert self.current_url == 'http://localhost:8000/instagram/post_photo'
+        self.assertEqual(self.browser.current_url,
+                         'http://localhost:8000/instagram/post_photo/',
+                         'They do not equal each other')
         self.fail('Finish the test if this passes')
 
 
