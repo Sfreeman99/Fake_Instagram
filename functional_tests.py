@@ -1,5 +1,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from time import sleep
 import unittest
 
 
@@ -26,11 +27,14 @@ class NewVisitor(unittest.TestCase):
     def test_if_you_can_successfully_go_to_the_post_form(self):
         self.browser.get('http://localhost:8000/instagram/feed/')
         link = self.browser.find_element_by_id('post_photo')
+        sleep(2)
         link.click()
+        sleep(10)
         self.assertEqual(self.browser.current_url,
                          'http://localhost:8000/instagram/post_photo/',
                          'They do not equal each other')
-        self.fail('Finish the test if this passes')
+        form_present = self.browser.find_element_by_tag_name('form')
+        assert form_present
 
 
 if __name__ == '__main__':  #7
