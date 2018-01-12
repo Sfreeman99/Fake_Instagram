@@ -1,16 +1,21 @@
 [[source]]
+
 verify_ssl = true
 url = "https://pypi.python.org/simple"
 name = "pypi"
+
 
 [packages]
 
 django = "*"
 pillow = "*"
-"pytest-django" = "*"
+pytest-django = "*"
 coverage = "*"
-"pytest-cov" = "*"
+pytest-cov = "*"
 selenium = "*"
+python-resize-image = "*"
+pytest-selenium = "*"
 
 
 [dev-packages]
+

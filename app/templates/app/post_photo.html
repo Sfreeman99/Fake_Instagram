@@ -1,8 +1,8 @@
-{% extends "app/base.html" %}
-{% block body %}
+{% extends "app/base.html" %} {% block body %}
 <form method="post" role="form" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{form.as_p}}
+    {% csrf_token %} {{form.as_p}}
     <button type="submit">submit</button>
 </form>
+<a id='post_photo' class="btn btn-primary" href="{% url 'app:feed' %}" role="button">Back</a>
+
 {% endblock body %}

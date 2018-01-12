@@ -1,20 +1,20 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "beed63fff264ff9ffbfdaddf4b39d9428b7368b33de23dd8209ef530ca10476d"
+            "sha256": "851a6c2c43e6c1f4879ede046b079bee4f94d57b5d906b79a7760941b46b2113"
         },
         "host-environment-markers": {
             "implementation_name": "cpython",
-            "implementation_version": "3.5.3",
+            "implementation_version": "3.6.4",
             "os_name": "posix",
             "platform_machine": "x86_64",
             "platform_python_implementation": "CPython",
-            "platform_release": "4.10.0-42-generic",
-            "platform_system": "Linux",
-            "platform_version": "#46-Ubuntu SMP Mon Dec 4 14:38:01 UTC 2017",
-            "python_full_version": "3.5.3",
-            "python_version": "3.5",
-            "sys_platform": "linux"
+            "platform_release": "17.3.0",
+            "platform_system": "Darwin",
+            "platform_version": "Darwin Kernel Version 17.3.0: Thu Nov  9 18:09:22 PST 2017; root:xnu-4570.31.3~1/RELEASE_X86_64",
+            "python_full_version": "3.6.4",
+            "python_version": "3.6",
+            "sys_platform": "darwin"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -33,6 +33,20 @@
                 "sha256:1c7960ccfd6a005cd9f7ba884e6316b5e430a3f1a6c37c5f87d8b43f83b54ec9"
             ],
             "version": "==17.4.0"
+        },
+        "certifi": {
+            "hashes": [
+                "sha256:244be0d93b71e93fc0a0a479862051414d0e00e16435707e5bf5000f92e04694",
+                "sha256:5ec74291ca1136b40f0379e1128ff80e866597e4e2c1e755739a913bbc3613c0"
+            ],
+            "version": "==2017.11.5"
+        },
+        "chardet": {
+            "hashes": [
+                "sha256:fc323ffcaeaed0e0a02bf4d117757b98aed530d9ed4531e3e15460124c106691",
+                "sha256:84ab92ed1c4d4f16916e05906b6b75a6c0fb5db821cc65e70cbd64a3e2a5eaae"
+            ],
+            "version": "==3.0.4"
         },
         "coverage": {
             "hashes": [
@@ -85,6 +99,13 @@
                 "sha256:d96b804be412a5125a594023ec524a2010a6ffa4d408e5482ab6ff3cb97ec12f"
             ],
             "version": "==2.0.1"
+        },
+        "idna": {
+            "hashes": [
+                "sha256:8c7309c718f94b3a625cb648ace320157ad16ff131ae0af362c9f21b80ef6ec4",
+                "sha256:2c6a5de3089009e3da7c5dde64a141dbc8551d5b7f6cf4ed7c2568d0cc520a8f"
+            ],
+            "version": "==2.6"
         },
         "pillow": {
             "hashes": [
@@ -152,6 +173,13 @@
             ],
             "version": "==3.3.1"
         },
+        "pytest-base-url": {
+            "hashes": [
+                "sha256:31e42366a5fc22f450b398837dc819bb7569f5e6bd5d74e494b2b9ec239876d1",
+                "sha256:7425e8163345494ac7f544e99c6f3e5a08f4228bee5e26013b98c462a4d31f6e"
+            ],
+            "version": "==1.4.1"
+        },
         "pytest-cov": {
             "hashes": [
                 "sha256:890fe5565400902b0c78b5357004aab1c814115894f4f21370e2433256a3eeec",
@@ -165,6 +193,40 @@
                 "sha256:038ccc5a9daa1b1b0eb739ab7dce54e495811eca5ea3af4815a2a3ac45152309"
             ],
             "version": "==3.1.2"
+        },
+        "pytest-html": {
+            "hashes": [
+                "sha256:135ea10b9ec0a5e370dc1820a5552d761aa3fec8400eabc0b06646f90f5c820e",
+                "sha256:d6ae1ae5d10158d290b603ccf46b5d103e93cf7d67df42bb7d6516fb4f1317f3"
+            ],
+            "version": "==1.16.1"
+        },
+        "pytest-metadata": {
+            "hashes": [
+                "sha256:e126a4ab80b77f08d3bc7da6ec1ed053317eaed042690eb5b4272b79a25c7f88",
+                "sha256:26761319ecc916f16dc95f166e41e041d50a6d587d8332300594dfcfda6a7199"
+            ],
+            "version": "==1.5.1"
+        },
+        "pytest-selenium": {
+            "hashes": [
+                "sha256:835b03c5aa05547ce625ce957b7213c810089abce8c3a75e829da89b9b390239",
+                "sha256:b80ca8cf78411587bddeaef8412c77903a145ce2fd479e8d0a1988e333a31d5a"
+            ],
+            "version": "==1.11.3"
+        },
+        "pytest-variables": {
+            "hashes": [
+                "sha256:61a6098175a59af5dbabf4c93ceee81a75f045868078903c44e2edb9582d5d6e",
+                "sha256:d333e1df272f9ef4bf45d8665ee46a4901b11ab52bf661e83174f42f2f83df39"
+            ],
+            "version": "==1.7.0"
+        },
+        "python-resize-image": {
+            "hashes": [
+                "sha256:41fb4420db20451d26e59441de4f9e59e02e4fff34fb0ba7216b045d1cf10cdd"
+            ],
+            "version": "==1.1.11"
         },
         "pytz": {
             "hashes": [
@@ -180,12 +242,19 @@
             ],
             "version": "==2017.3"
         },
+        "requests": {
+            "hashes": [
+                "sha256:6a1b267aa90cac58ac3a765d067950e7dbbf75b1da07e895d1f594193a40a38b",
+                "sha256:9c443e7324ba5b85070c4a818ade28bfabedf16ea10206da1132edaa6dda237e"
+            ],
+            "version": "==2.18.4"
+        },
         "selenium": {
             "hashes": [
-                "sha256:af448c15b3225056cd406b435cda10bfcee250460a4811e4fd8b21be9f61626c",
-                "sha256:3af07d7a4b5d523540fa4f32902b9dec15e0379862406aef974729f42411053d"
+                "sha256:5acb9cdbc2d1a7fbb3e16a8ce9246211cc371f0367ad9c6bc2273cca60a6b045",
+                "sha256:9abd2dbd4a5e9b778483ce7e5adf1ea9364fcbc29da488e979213c825a1515d3"
             ],
-            "version": "==3.8.0"
+            "version": "==3.8.1"
         },
         "six": {
             "hashes": [
@@ -193,6 +262,13 @@
                 "sha256:70e8a77beed4562e7f14fe23a786b54f6296e34344c23bc42f07b15018ff98e9"
             ],
             "version": "==1.11.0"
+        },
+        "urllib3": {
+            "hashes": [
+                "sha256:06330f386d6e4b195fbfc736b297f58c5a892e4440e54d294d7004e3a9bbea1b",
+                "sha256:cc44da8e1145637334317feebd728bd869a35285b93cbb4cca2577da7e62db4f"
+            ],
+            "version": "==1.22"
         }
     },
     "develop": {}
