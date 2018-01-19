@@ -4,6 +4,20 @@ from time import sleep
 import unittest
 
 
+def highlight(element):
+    """Highlights (blinks) a Selenium Webdriver element"""
+    driver = element._parent
+
+    def apply_style(s):
+        driver.execute_script(
+            "arguments[0].setAttribute('style', arguments[1]);", element, s)
+
+    original_style = element.get_attribute('style')
+    apply_style("background: yellow; border: 2px solid red;")
+    sleep(.3)
+    apply_style(original_style)
+
+
 class NewVisitor(unittest.TestCase):
     def setUp(self):
         self.browser = webdriver.Chrome()
@@ -27,6 +41,7 @@ class NewVisitor(unittest.TestCase):
     def test_if_you_can_successfully_go_to_the_post_form(self):
         self.browser.get('http://localhost:8000/instagram/feed/')
         link = self.browser.find_element_by_id('post_photo')
+        highlight(link)
         sleep(2)
         link.click()
         sleep(10)
