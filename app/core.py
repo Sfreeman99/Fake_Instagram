@@ -1,40 +1,31 @@
-from PIL import Image
+from PIL import Image, ImageFont, ImageDraw
 from resizeimage import resizeimage
 
 
-def get_images(image):
-    ''' '''
-    i = Image.open(image)
-    i = i.convert('RGBA')
-    w, h = i.size
-    i = resizeimage.resize_cover(i, [200, 200])
-    i = i.convert('RGBA')
-    w, h = i.size
-    img_data = i.getdata()
-    pixel_list = list(img_data)
-    # above here is opening the image data
-    # Doubles the pixels in the line below
-    # pixel_list.extend(list(img_data)[::-1])
-
-    # making the new image below here
-    new_img = Image.new('RGBA', (w, h))
-    new_img.putdata(pixel_list)
-    return new_img
-    # new_img.filter(ImageFilter.EDGE_ENHANCE_MORE).show()
-    # new_img_2.show()
-    # Image.alpha_composite(new_img, new_img_2).show()
-
-
-def add_overlay(image_one, overlay):
+def add_overlay(image_one):
     ''' img_path, img_path -> img_file
 
     takes in two images and returns a new image with
     the overlay chosen
 
     '''
-    new_img = get_images(image_one)
-    new_img_2 = get_images(overlay)
-    new_img = Image.alpha_composite(new_img, new_img_2)
-    new_img = new_img.convert('RGB')
-    print(type(image_one))
-    new_img.save(open(str(image_one), 'wb'))
+    # this will need to change!!
+    path = image_one
+
+    # img properties
+    color_1 = (99, 159, 249)
+    color_2 = (255, 255, 255)
+    w, h = 600, 600
+
+    # opening image
+    i = Image.open(path).convert('RGB')
+    i = resizeimage.resize_cover(i, [w, h])
+
+    # adding text
+    draw = ImageDraw.Draw(i)
+    font = ImageFont.truetype("Emilio 19.ttf", 80)
+    draw.text((25, 400), "8ASE CAMP", color_1, font=font)
+    draw.text((13, 400), "1", color_2, font=font)
+
+    # figure out how to save it!
+    i.save(open(str(image_one), 'wb'))
