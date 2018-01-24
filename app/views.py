@@ -9,14 +9,16 @@ from PIL import Image
 # Create your views here.
 class Feed(View):
     def get(self, request):
-        return render(request, 'app/feed.html',
-                      {'images': ImageModel.objects.all()})
+        return render(request, 'app/feed.html', {
+            'images': ImageModel.objects.all()
+        })
 
 
 class PostPhotoView(View):
     def get(self, request):
-        return render(request, 'app/post_photo.html',
-                      {'form': PostPhotoForm()})
+        return render(request, 'app/post_photo.html', {
+            'form': PostPhotoForm()
+        })
 
     def post(self, request):
         form = PostPhotoForm(request.POST, request.FILES)
@@ -44,13 +46,16 @@ class EditPhotoView(View):
         form = EditPhotoForm(request.POST, request.FILES)
         if form.is_valid():
             path = ImageModel.objects.get(id=id).image
-            picture = Image.open(path)
+            # picture = Image.open(path)
             overlay = form.cleaned_data['over_lay']
-            filtered_image = add_overlay(path, overlay)
-            return redirect('app:feed')
+            if overlay == "Base Camp Filter":
+                add_overlay(path)
+                ImageModel.objects.get(id=id).save()
+                return redirect('app:feed')
         else:
             return render(
                 request,
-                'app/edit_photo.html',
-                {'form': form,
-                 'photo': ImageModel.objects.get(id=id)})
+                'app/edit_photo.html', {
+                    'form': form,
+                    'photo': ImageModel.objects.get(id=id)
+                })

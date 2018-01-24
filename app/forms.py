@@ -12,6 +12,6 @@ class PostPhotoForm(forms.ModelForm):
 
 class EditPhotoForm(forms.Form):
     over_lay = forms.ChoiceField(choices=[
-        ('/home/basecamp/Pictures/Happy_New_Year_FIlter.png', '2017 filter'),
+        ('Base Camp Filter', '2018 Base Camp Filter'),
         ('None', 'No Filter'),
     ])
