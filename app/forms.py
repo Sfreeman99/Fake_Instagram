@@ -10,6 +10,10 @@ class PostPhotoForm(forms.ModelForm):
         fields = ('name', 'image')
 
 
+class CommentForm(forms.Form):
+    comment = forms.CharField(max_length=250)
+
+
 class EditPhotoForm(forms.Form):
     over_lay = forms.ChoiceField(choices=[
         ('Base Camp Filter', '2018 Base Camp Filter'),
