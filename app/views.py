@@ -14,6 +14,16 @@ class Feed(View):
         })
 
 
+class CommentView(View):
+    def get(self, request, id):
+        return render(
+            request,
+            "app/comment-form.html", {
+                'form': CommentForm(),
+                'photo': ImageModel.objects.get(id=id),
+            })
+
+
 class PostPhotoView(View):
     def get(self, request):
         return render(request, 'app/post_photo.html', {
