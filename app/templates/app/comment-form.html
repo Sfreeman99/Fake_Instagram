@@ -1,4 +1,23 @@
-<form method="post">
-    {% csrf_token %}
-    <input class='form-control' type="text" name="comment" placeholder="Add a comment here..." />
-</form>
+{% extends "app/base.html" %}{% load static %} {% block body %}
+<div class='container col-lg-6'>
+    <form action="" method="post">
+        {% csrf_token %}
+
+        <input class='form-control' type="text" name="comment" placeholder="Add a comment here..." />
+    </form>
+    {% if photo.commentmodel_set.all %} {% for comments in photo.commentmodel_set.all %}
+    <div class="card">
+        <div class="card-body">
+            {{comments.comment}}
+        </div>
+    </div>
+    {% endfor %} {% else %}
+    <div class="card">
+        <div class="card-body">
+            No comments
+        </div>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock body %}
