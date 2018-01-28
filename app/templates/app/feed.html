@@ -13,7 +13,7 @@
                 <p class="card-text">
                     <small class="text-muted">Last updated 3 mins ago</small>
                 </p>
-                {% endcomment %} {% if comments in image_model.comment_set.all %}
+                {% endcomment %} {% if image_model.commentmodel_set.all|length > 0 %}
                 <h6>it is some comments</h6>
                 {% else %}
                 <h6>No comments</h6>
