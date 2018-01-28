@@ -17,8 +17,9 @@
                 <h6>it is some comments</h6>
                 {% else %}
                 <h6>No comments</h6>
-                {% endif %} {% include "app/comment-form.html" with image=image_model form=CommentForm%}
+                {% endif %}
                 <a class="btn btn-primary" href="{% url 'app:edit_photo' id=image_model.id %}" role="button">Edit Photo</a>
+                <a class="btn btn-primary" href="{% url 'app:comment' id=image_model.id %}" role="button">Comment</a>
 
             </div>
         </div>
