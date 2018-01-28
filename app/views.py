@@ -23,6 +23,21 @@ class CommentView(View):
                 'photo': ImageModel.objects.get(id=id),
             })
 
+    def post(self, request, id):
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.cleaned_data['comment']
+            CommentModel(
+                comment=comment, image=ImageModel.objects.get(id=id)).save()
+            return redirect("app:feed")
+        else:
+            render(
+                request,
+                'app/comment-form.html', {
+                    'form': form,
+                    'photo': ImageModel.objects.get(id=id),
+                })
+
 
 class PostPhotoView(View):
     def get(self, request):
