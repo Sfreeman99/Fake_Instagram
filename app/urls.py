@@ -11,4 +11,5 @@ urlpatterns = [
         views.EditPhotoView.as_view(),
         name='edit_photo'),
     path('comment/<int:id>', views.CommentView.as_view(), name='comment'),
+    path("signup/", views.SignUp.as_view(), name='signup'),
 ]
