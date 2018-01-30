@@ -9,7 +9,7 @@ class PostPhotoForm(forms.ModelForm):
     # image = forms.ImageField(label='Upload Image')
     class Meta:
         model = ImageModel
-        fields = ('name', 'image')
+        fields = ('description', 'image')
 
 
 class CommentForm(forms.Form):

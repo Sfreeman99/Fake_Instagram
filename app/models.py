@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.utils import timezone
 
 
 class Profile(models.Model):
@@ -26,11 +25,11 @@ class CommentModel(models.Model):
 
 
 class ImageModel(models.Model):
-    name = models.CharField(max_length=250, )
+    description = models.CharField(max_length=250, )
     image = models.ImageField(upload_to='./app/static/pictures')
 
     uploaded_by = models.ForeignKey(
-        Profile, on_delete=models.CASCADE, default=timezone.now)
+        Profile, on_delete=models.CASCADE, null=True)
 
     def image_url(self):
         #return self.image.name[len('app/static/'):]
