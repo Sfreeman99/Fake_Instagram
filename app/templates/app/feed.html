@@ -3,23 +3,24 @@
     <div class="col-lg-6 offset-lg-2">
         {% for image_model in images %}
         <div class="card mb-3">
-            <img class="card-img-top" src="{% static image_model.image_url %}" alt="Card image cap">
+            <img class="card-img-top feed-image" src="{% static image_model.image_url %}" alt="Card image cap">
             <div class="card-body">
-                <h5 class="card-title">{{image_model.name}}</h5>
-                {% comment "future description once added to models" %}
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content
-                    is a little bit longer.</p>
-                {% endcomment %} {% comment "posted date once added to model" %}
+                {% comment %}
+                <h4 class="card-title">{{image_model.name}}</h4> {% endcomment %}
+                <p class="card-text">{{image_model.name}}</p>
+                {% comment "posted date once added to model" %}
                 <p class="card-text">
                     <small class="text-muted">Last updated 3 mins ago</small>
                 </p>
-                {% endcomment %} {% if image_model.commentmodel_set.all|length > 0 %}
-                <h6>it is some comments</h6>
+                {% endcomment %} {% if image_model.commentmodel_set.all|length > 0 %} {% for comments in image_model.commentmodel_set.all|slice:":3"%}
+                <h6>{{comments.comment}}</h6>
+                {% endfor %}
+                <a id='more-comments' href="{% url 'app:comment' id=image_model.id %}">all more comments here...</a>
                 {% else %}
                 <h6>No comments</h6>
                 {% endif %}
-                <a class="btn btn-primary" href="{% url 'app:edit_photo' id=image_model.id %}" role="button">Edit Photo</a>
-                <a class="btn btn-primary" href="{% url 'app:comment' id=image_model.id %}" role="button">Comment</a>
+                <a class="btn btn-primary btn-sm" href="{% url 'app:edit_photo' id=image_model.id %}" role="button">Edit Photo</a>
+                <a class="btn btn-primary btn-sm" href="{% url 'app:comment' id=image_model.id %}" role="button">Comment</a>
 
             </div>
         </div>
