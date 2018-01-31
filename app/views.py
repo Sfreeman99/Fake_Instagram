@@ -8,6 +8,7 @@ from app.core import add_overlay
 from PIL import Image
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
+from django.http import Http404
 
 
 # Create your views here.
@@ -81,8 +82,10 @@ class CommentView(LoginRequiredMixin, View):
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.cleaned_data['comment']
-            CommentModel(
-                comment=comment, image=ImageModel.objects.get(id=id)).save()
+            new_comment = CommentModel(
+                comment=comment,
+                image=ImageModel.objects.get(id=id),
+                commentor=request.user.profile).save()
             return redirect("app:feed")
         else:
             render(
@@ -105,7 +108,7 @@ class PostPhotoView(LoginRequiredMixin, View):
     def post(self, request):
         form = PostPhotoForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            form.save(request.user.profile)
             # name = form.cleaned_data['name']
             # image = form.cleaned_data['image']
             # ImageModel(name=name, image=image).save()
@@ -120,12 +123,14 @@ class EditPhotoView(LoginRequiredMixin, View):
     redirect_field_name = "app:signup"
 
     def get(self, request, id):
-        return render(
-            request,
-            'app/edit_photo.html', {
-                'form': EditPhotoForm(),
-                'photo': ImageModel.objects.get(id=id),
-            })
+        image = ImageModel.objects.get(id=id)
+        if request.user != image.uploaded_by.user:
+            raise Http404("You are not authorized to edit {}'s image".format(
+                image.uploaded_by.user.username))
+        return render(request, 'app/edit_photo.html', {
+            'form': EditPhotoForm(),
+            'photo': image,
+        })
 
     def post(self, request, id):
         form = EditPhotoForm(request.POST, request.FILES)
