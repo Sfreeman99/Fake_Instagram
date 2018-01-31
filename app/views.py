@@ -1,38 +1,58 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.forms import UserCreationForm
 from django.views import View
 from app.models import *
 from app.forms import *
 from app.core import add_overlay
 from PIL import Image
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 
 
 # Create your views here.
 class SignUp(View):
     def get(self, request):
-        return render(request, "app/signup.html", {'form': SignUpForm()})
+        return render(request, "app/signup.html", {'form': UserCreationForm()})
 
     def post(self, request):
-        form = SignUpForm(request.POST)
+
+        form = UserCreationForm(request.POST)
         if form.is_valid():
-            user = form.save()  # Save the user if the form is valid
-            user.refresh_from_db(
-            )  # Load user information created by the signal in the Model
-            user.profile.birth_date = form.cleaned_data[
-                'birth_date']  # Goes in the users profile information and updates the birthdate
-            user.save()  # save the user and update their information
-            raw_password = form.cleaned_data['password1']  # get their password
-            user = authenticate(
-                username=user.username, password=raw_password
-            )  # authenticate that this user exists and is valid
-            login(
-                request,
-                user)  # if the authentication was correct, it will log you in
-            return redirect('app:feed')
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return redirect('app:feed')
         else:
-            form = SignUpForm()
-        return render(request, "app/signup.html", {'form': SignUpForm})
+            return render(request, 'app/signup.html', {'form': form})
+
+
+class LogIn(View):
+    def get(self, request):
+        return render(request, 'app/login.html', {'form': LogInForm})
+
+    def post(self, request):
+        form = LogInForm(request.POST)
+        if form.is_valid():
+            username = request.POST['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return redirect('app:feed')
+        else:
+            return render(request, 'app/login.html', {'form': form})
+
+
+class LogOut(LoginRequiredMixin, View):
+    def get(self, request):
+        logout(request)
+        return redirect('app:signup')
 
 
 class Feed(LoginRequiredMixin, View):
