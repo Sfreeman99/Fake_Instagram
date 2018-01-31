@@ -16,12 +16,47 @@
 
 
 <body>
-    <div class="jumbotron">
-        <h1 class="display-4">The Gram</h1>
-        <a id='post_photo' class="btn btn-primary btn-lg" href="{% url 'app:post_photo' %}" role="button">Post Photo
-            <i class="fa fa-camera" aria-hidden="true"></i>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">The Gram
+            <span class="sr-only">(current)</span>
         </a>
-    </div>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            {% if user.is_authenticated %}
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'app:feed' %}">Feed
+
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav justify-content-end">
+                <li class="nav-item ">
+                    <a class="nav-link" href="#">{{user.username}}</a>
+                </li>
+                <li class='nav-item'>
+                    <a class='nav-link' href="{% url 'app:logout' %}">Logout</a>
+                </li>
+            </ul>
+
+        </div>
+        {% else %}
+        <ul class="nav justify-content-end">
+            <li class="nav-item ">
+                <a class="nav-link" href="#">{{user.username}}</a>
+
+                <h4>Login First</h4>
+
+            </li>
+        </ul>
+        {% endif %}
+    </nav>
     {% block body %} {% endblock %}
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
