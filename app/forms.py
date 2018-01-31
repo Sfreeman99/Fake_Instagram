@@ -11,6 +11,11 @@ class PostPhotoForm(forms.ModelForm):
         model = ImageModel
         fields = ('description', 'image')
 
+    def save(self, profile):
+        super().save()
+        self.instance.uploaded_by = profile
+        self.instance.save()
+
 
 class CommentForm(forms.Form):
     comment = forms.CharField(max_length=250)
