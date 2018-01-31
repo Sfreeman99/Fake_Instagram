@@ -10,6 +10,15 @@ class Profile(models.Model):
     location = models.CharField(max_length=35)
     birth_date = models.DateField(null=True, blank=True)
 
+    def username(self):
+        return self.user.username
+
+    def first_name(self):
+        return self.user.first_name
+
+    def last_name(self):
+        return self.user.last_name
+
 
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):
@@ -22,6 +31,7 @@ class CommentModel(models.Model):
     comment = models.CharField(max_length=250)
     date = models.DateTimeField(auto_now_add=True)
     image = models.ForeignKey("ImageModel", on_delete=models.CASCADE)
+    commentor = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
 
 
 class ImageModel(models.Model):
