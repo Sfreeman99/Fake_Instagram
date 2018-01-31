@@ -12,6 +12,9 @@
         </form>
         {% if photo.commentmodel_set.all %} {% for comments in photo.commentmodel_set.all %}
         <div class="card">
+            <div class='card-title'>
+                {{comments.commentor.username}}
+            </div>
             <div class="card-body">
                 {{comments.comment}}
             </div>

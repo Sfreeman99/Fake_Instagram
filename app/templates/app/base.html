@@ -30,10 +30,12 @@
             {% if user.is_authenticated %}
             <ul class="navbar-nav mr-auto">
 
-                <li class="nav-item active">
+                <li class="nav-item">
                     <a class="nav-link" href="{% url 'app:feed' %}">Feed
-
                     </a>
+                </li>
+                <li class='nav-item'>
+                    <a class='nav-link' href="{% url 'app:post_photo' %}">Post</a>
                 </li>
             </ul>
             <ul class="nav justify-content-end">
@@ -44,18 +46,15 @@
                     <a class='nav-link' href="{% url 'app:logout' %}">Logout</a>
                 </li>
             </ul>
+            {% else %}
 
+            <ul class="nav justify-content-end">
+                <li class="nav-item ">
+                    <h4>Login First</h4>
+                </li>
+            </ul>
+            {% endif %}
         </div>
-        {% else %}
-        <ul class="nav justify-content-end">
-            <li class="nav-item ">
-                <a class="nav-link" href="#">{{user.username}}</a>
-
-                <h4>Login First</h4>
-
-            </li>
-        </ul>
-        {% endif %}
     </nav>
     {% block body %} {% endblock %}
 </body>
