@@ -1,3 +1,9 @@
 #comment-image {
   padding-bottom: 25px;
 }
+#more-comments:hover {
+  text-decoration: None;
+}
+.feed-image {
+  height: 300px;
+}
