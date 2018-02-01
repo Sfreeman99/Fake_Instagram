@@ -5,5 +5,9 @@
   text-decoration: None;
 }
 .feed-image {
-  height: 300px;
+  width: 100%;
+}
+.username-in-feed {
+  padding-right: 3px;
+  font-weight: bold;
 }

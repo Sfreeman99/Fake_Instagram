@@ -13,8 +13,11 @@
                 <p class="card-text">
                     <strong>{{image_model.uploaded_by.username}}</strong>&nbsp;&nbsp;{{image_model.description}}</p>
                 {% if image_model.commentmodel_set.all|length > 0 %} {% for comments in image_model.commentmodel_set.all|slice:":3"%}
-                <h6>{{comments.comment}}</h6>
-                {% endfor %}
+                <h6>
+                    <span class='username-in-feed'>{{comments.commentor.username}}</span>
+                    <span class='comment-in-feed'>{{comments.comment}}</span>
+                </h6> {% endfor %}
+
                 <a id='more-comments' href="{% url 'app:comment' id=image_model.id %}">all more comments here...</a>
                 {% else %}
                 <h6>No comments</h6>
